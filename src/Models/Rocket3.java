@@ -2,15 +2,15 @@ package Models;
 
 import java.util.List;
 
-public class Rocket3 {
+public class Rocket3 extends Thread{
 	
 	private String codiId;
 	private List<Propulsor> propulsores;
 	private Double velocidad_actual;
 	
-	public Rocket3(String codiId, List<Propulsor> propulsores1) {
+	public Rocket3(String codiId, List<Propulsor> propulsores) {
 		this.codiId = codiId;
-		this.propulsores = propulsores1;
+		this.propulsores = propulsores;
 	}
 
 	public Double getVelocidad_actual() {
@@ -46,6 +46,24 @@ public class Rocket3 {
 		output = Vo + 100*Math.sqrt(sum_prop);
 		return output;
 	}
+	
+	public void run(int j) {
+		if (j>0) {
+			for (int a = 0; a < j; a++) {
+				for (int i = 0; i < propulsores.size(); i++) {
+					propulsores.get(i).acelerar();
+				}
+			}
+		}
+		if (j<0) {
+			for (int a = 0; a > j; a--) {
+				for (int i = 0; i < propulsores.size(); i++) {
+					propulsores.get(i).frenar();
+				}
+			}
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Codigo = " + codiId + "\nPropulsores = \n" + propulsores + "\n";

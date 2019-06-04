@@ -2,21 +2,21 @@ package Models;
 
 public class Propulsor {
 	
-	private int id,potencia_actual,potencia_maxima;
+	private int propId,potencia_actual,potencia_maxima;
 
-	public Propulsor(int id, int potencia_actual, int potencia_maxima) {
+	public Propulsor(int propId, int potencia_actual, int potencia_maxima) {
 		super();
-		this.id = id;
+		this.propId = propId;
 		this.potencia_actual = potencia_actual;
 		this.potencia_maxima = potencia_maxima;
 	}
 	
-	public int getId() {
-		return id;
+	public int getpropId() {
+		return propId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setpropId(int propId) {
+		this.propId = propId;
 	}
 
 	public int getPotencia_actual() {
@@ -39,23 +39,25 @@ public class Propulsor {
 		if (potencia_maxima >= (potencia_actual+10)) {
 			potencia_actual += 10;
 		} else {
-			System.out.println(id + " Está a máxima potencia");
+			System.out.println(propId + " Está a máxima potencia");
 			potencia_actual=potencia_maxima;
 		}
+		System.out.println(potencia_actual);
 		return potencia_actual;
 	}
 	
 	public int frenar() {
-		if (0 >= (potencia_actual-10)) {
+		if (0 <= (potencia_actual-10)) {
 			potencia_actual -= 10;
 		} else {
 			System.out.println("Está a potencia 0");
 			potencia_actual=0;
 		}
+		System.out.println(potencia_actual);
 		return potencia_actual;
 	}
 	@Override
 	public String toString() {
-		return id + " PA = " + potencia_actual + ", PM = " + potencia_maxima + "\n";
+		return propId + " PA = " + potencia_actual + ", PM = " + potencia_maxima + "\n";
 	}
 }

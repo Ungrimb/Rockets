@@ -49,65 +49,26 @@ public class Main3 {
 		System.out.println("Velocidad actual coet1 " + coet1.getVelocidad_actual());
 		System.out.println("Velocidad actual coet2 " + coet2.getVelocidad_actual());
 		
-		Runnable r1 = ()-> {
-			for (int i = 0; i < 3; i++) {
-				propulsor1.acelerar();
-                propulsor2.acelerar();
-                propulsor3.acelerar();
-                propulsor4.acelerar();
-                propulsor5.acelerar();
-                propulsor6.acelerar();
-                propulsor7.acelerar();
-                propulsor8.acelerar();
-                propulsor9.acelerar();
-			}
-			System.out.println("Velocidad actual coet1 "  + Thread.currentThread().getName() + " " + (coet1.vAct(coet1.getVelocidad_actual())));
-			System.out.println("Velocidad actual coet2 "  + Thread.currentThread().getName() + " " + (coet2.vAct(coet2.getVelocidad_actual())));
-		};
+		coet1.run(3);
+		coet2.run(3);
+		System.out.println(coet1);
+		System.out.println("Velocidad actual coet1 "  + (coet1.vAct(coet1.getVelocidad_actual())));
+		System.out.println(coet2);
+		System.out.println("Velocidad actual coet2 "  + (coet2.vAct(coet2.getVelocidad_actual())));
 		
-		Thread evento1 = new Thread(r1,"Acelerar 3 veces");
+		coet1.run(-5);
+		coet2.run(7);
+		System.out.println(coet1);
+		System.out.println("Velocidad actual coet1 "  + (coet1.vAct(coet1.getVelocidad_actual())));
+		System.out.println(coet2);
+		System.out.println("Velocidad actual coet2 "  + (coet2.vAct(coet2.getVelocidad_actual())));
 		
-		Thread r2 = new Thread("Frenar 5 veces y acelerar 7") {
-			public void run(){
-				for (int i = 0; i < 5; i++) {
-					propulsor1.frenar();
-	                propulsor2.frenar();
-	                propulsor3.frenar();
-				}
-				for (int i = 0; i < 7; i++) {
-	                propulsor4.acelerar();
-	                propulsor5.acelerar();
-	                propulsor6.acelerar();
-	                propulsor7.acelerar();
-	                propulsor8.acelerar();
-	                propulsor9.acelerar();
-				}
-				System.out.println("Velocidad actual coet1 "  + Thread.currentThread().getName() + " " + (coet1.vAct(coet1.getVelocidad_actual())));
-				System.out.println("Velocidad actual coet2 "  + Thread.currentThread().getName() + " " + (coet2.vAct(coet2.getVelocidad_actual())));
-            }
-		};
-		
-		Thread r3 = new Thread("Acelerar 15 veces") {
-			public void run(){
-				for (int i = 0; i < 15; i++) {
-					propulsor1.acelerar();
-	                propulsor2.acelerar();
-	                propulsor3.acelerar();
-	                propulsor4.acelerar();
-	                propulsor5.acelerar();
-	                propulsor6.acelerar();
-	                propulsor7.acelerar();
-	                propulsor8.acelerar();
-	                propulsor9.acelerar();
-				}
-				System.out.println("Velocidad actual coet1 "  + Thread.currentThread().getName() + " " + (coet1.vAct(coet1.getVelocidad_actual())));
-				System.out.println("Velocidad actual coet2 "  + Thread.currentThread().getName() + " " + (coet2.vAct(coet2.getVelocidad_actual())));
-            }
-		};
-		
-		evento1.start();
-		r2.start();
-		r3.start();
+		coet1.run(15);
+		coet2.run(15);
+		System.out.println(coet1);
+		System.out.println("Velocidad actual coet1 "  + (coet1.vAct(coet1.getVelocidad_actual())));
+		System.out.println(coet2);
+		System.out.println("Velocidad actual coet2 "  + (coet2.vAct(coet2.getVelocidad_actual())));
 
 	}
 
